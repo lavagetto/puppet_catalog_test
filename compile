@@ -30,9 +30,10 @@ fi
 
 
 bundle exec puppet master \
-  --modulepath=$PUPPETDIR/modules/public:$PUPPETDIR/modules/site \
+  --modulepath=$PUPPETDIR/modules/:$PUPPETDIR/modules/site \
   --manifestdir $PUPPETDIR/manifests \
   --yamldir $ETCDIR/var/yaml \
+  --templatedir $PUPPETDIR/templates \
   --confdir $ETCDIR/etc \
   --vardir $ETCDIR/var \
   --storeconfigs true \
