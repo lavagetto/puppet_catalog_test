@@ -3,9 +3,10 @@
 
 # Common defs
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-PUPPETDIR=$(readlink -f ${DIR}/../puppet)
-PRIVATEDIR=$(readlink -f ${DIR}/../private)
-FACTS_ARCHIVE=$(readlink -f ${DIR}/../puppet-facts.tar.xz)
+PARENT=$(readlink -f ${DIR}/../)
+PUPPETDIR=${PARENT}/puppet
+PRIVATEDIR=${PARENT}/private
+FACTS_ARCHIVE=${PARENT}/puppet-facts.tar.xz
 
 function log () {
     echo "$@"
@@ -13,7 +14,7 @@ function log () {
 
 function checkout() {
     log "Checking out repositories"
-    pushd ${DIR}
+    pushd ${PARENT}
     git clone https://gerrit.wikimedia.org/r/operations/puppet
     git clone https://gerrit.wikimedia.org/r/labs/private
     pushd ${PRIVATEDIR}
